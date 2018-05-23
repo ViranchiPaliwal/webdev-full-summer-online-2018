@@ -16,4 +16,40 @@ public class UserService {
 	public List<User> findAllUsers() {
 		return (List<User>) userRepository.findAll();
 	}
+	
+	@PostMapping("/api/user")
+	public User createUser(@RequestBody User user){
+		return userRepository.save(user);
+	}
+	
+	
+	@DeleteMapping("api/user/{userId}")
+	public void DeleteUser(@PathVariable("userId") int id){
+		userRepository.deleteById(id);
+	}
+	
+	@GetMapping("/api/user/{userId}")
+	public User findUserById(@PathVariable("userId") int id){
+		Optional<User> user = userRepository.findById(id);
+		if(user.isPresent()) {
+			return user.get();
+		}
+		return null;
+	}
+	
+	@PutMapping("/api/user/{userId}")
+	public User updateUser(@PathVariable("userId") int id,@RequestBody User updatedUser){
+		Optional<User> user = userRepository.findById(id);
+		if(user.isPresent()) {
+			User existUser = user.get();
+			existUser.setUsername(updatedUser.getUsername());
+			existUser.setPassword(updatedUser.getPassword());
+			existUser.setFirstName(updatedUser.getFirstName());
+			existUser.setLastName(updatedUser.getLastName());
+			existUser.setRole(updatedUser.getRole());
+			userRepository.save(existUser);
+			return existUser;
+		}
+		return null;
+	}
 }
