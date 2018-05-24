@@ -62,15 +62,15 @@ public class UserService {
 	
 	@PostMapping("/api/register")
 	public User register(@RequestBody User user){
-		List<User> users = findUserByName(user.getUsername());
+		List<User> users = findUserByUsername(user.getUsername());
 		if(users.isEmpty()) {
 			return createUser(user);
 		}
 		return null;
 	}
 	
-	public List<User> findUserByName(String username){
-		return (List<User>)userRepository.findUserByName(username);
+	public List<User> findUserByUsername(String username){
+		return (List<User>)userRepository.findUserByUsername(username);
 	}
 
 }

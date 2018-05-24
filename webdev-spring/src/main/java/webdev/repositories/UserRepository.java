@@ -8,7 +8,7 @@ import webdev.models.User;
 public interface UserRepository extends CrudRepository<User, Integer> {
 	@Query("SELECT u FROM User u WHERE"
 			+ " u.username=:username")
-	Iterable<User> findUserByName(
+	Iterable<User> findUserByUsername(
 			@Param("username") String username);
 }
 
