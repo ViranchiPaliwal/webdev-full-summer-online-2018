@@ -28,6 +28,14 @@ public class UserService {
 		return userRepository.save(user);
 	}
 	
+	@PostMapping("/api/login")
+	public User login(@RequestBody User user){
+		List<User> users = (List<User>) userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+		if(users.isEmpty()) {
+			return null;
+		}
+		return users.get(0);
+	}
 	
 	@DeleteMapping("/api/user/{userId}")
 	public void DeleteUser(@PathVariable("userId") int id){

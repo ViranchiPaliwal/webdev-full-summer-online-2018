@@ -5,10 +5,12 @@ function UserServiceClient() {
 	this.deleteUser = deleteUser;
 	this.updateUser = updateUser;
 	this.register = register;
-	this.url = 'http://localhost:8080/api/user';
+    this.login = login;
+    this.url = 'http://localhost:8080/api/user';
 	this.registerUrl = 'http://localhost:8080/api/register';
-	
-	var self = this;
+    this.loginUrl = 'http://localhost:8080/api/login';
+
+    var self = this;
 	function createUser(newUser, callback) {
 		return fetch(self.url,{
 			method: 'post',
@@ -56,5 +58,14 @@ function UserServiceClient() {
 				'content-type':'application/json'
 			}
 		});
+    }
+    function login(newUser, callback) {
+        return fetch(self.loginUrl,{
+            method: 'post',
+            body: JSON.stringify(newUser),
+            headers:{
+                'content-type':'application/json'
+            }
+        });
     }
 }
