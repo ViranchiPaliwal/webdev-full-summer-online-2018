@@ -13,9 +13,19 @@
 		$passwordFld = $('#passwordFld').val();
 
 		var newUser = new User($usernameFld,
-            				$passwordFld,
-							null, null, null, null, null, null);
-		userService.register(newUser);
-		
+				$passwordFld,
+				null, null, null, null, null, null);
+
+		userService.register(newUser)
+            .then(showStatus);
+
+	}
+	function showStatus(user){
+		if(user==null){
+			alert('user exist');
+		}
+		else{
+			alert('Success');
+		}
 	}
 })();

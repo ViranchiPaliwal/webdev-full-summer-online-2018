@@ -4,7 +4,10 @@ function UserServiceClient() {
 	this.findUserById = findUserById;
 	this.deleteUser = deleteUser;
 	this.updateUser = updateUser;
+	this.register = register;
 	this.url = 'http://localhost:8080/api/user';
+	this.registerUrl = 'http://localhost:8080/api/register';
+	
 	var self = this;
 	function createUser(newUser, callback) {
 		return fetch(self.url,{
@@ -45,4 +48,13 @@ function UserServiceClient() {
 			method: 'delete'
 		});
 	}
+    function register(newUser, callback) {
+    	return fetch(self.registerUrl,{
+			method: 'post',
+			body: JSON.stringify(newUser),
+			headers:{
+				'content-type':'application/json'
+			}
+		});
+    }
 }

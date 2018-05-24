@@ -17,13 +17,19 @@ public class UserService {
 		return (List<User>) userRepository.findAll();
 	}
 	
+	@GetMapping("/api/register")	
+	public List<User> findAllUserss() {
+		return (List<User>) userRepository.findAll();
+	}
+	
+	
 	@PostMapping("/api/user")
 	public User createUser(@RequestBody User user){
 		return userRepository.save(user);
 	}
 	
 	
-	@DeleteMapping("api/user/{userId}")
+	@DeleteMapping("/api/user/{userId}")
 	public void DeleteUser(@PathVariable("userId") int id){
 		userRepository.deleteById(id);
 	}
@@ -52,4 +58,19 @@ public class UserService {
 		}
 		return null;
 	}
+	
+	
+	@PostMapping("/api/register")
+	public User register(@RequestBody User user){
+		List<User> users = findUserByName(user.getUsername());
+		if(users.isEmpty()) {
+			return createUser(user);
+		}
+		return null;
+	}
+	
+	public List<User> findUserByName(String username){
+		return (List<User>)userRepository.findUserByName(username);
+	}
+
 }
