@@ -77,6 +77,18 @@ public class UserService {
 		return null;
 	}
 	
+	@PutMapping("/api/profile")
+	public User updateProfile(@RequestBody User updatedUser){
+		List<User> users = findUserByUsername(updatedUser.getUsername());
+		User existUser = users.get(0);
+		existUser.setEmail(updatedUser.getEmail());
+		existUser.setDateOfBirth(updatedUser.getDateOfBirth());
+		existUser.setPhone(updatedUser.getPhone());
+		existUser.setRole(updatedUser.getRole());
+		userRepository.save(existUser);
+		return existUser;
+	}
+	
 	public List<User> findUserByUsername(String username){
 		return (List<User>)userRepository.findUserByUsername(username);
 	}

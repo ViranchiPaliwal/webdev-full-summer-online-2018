@@ -18,8 +18,9 @@
         $('#wbdv-phone').val(user.phone);
         $('#wbdv-email').val(user.email);
         $('#wbdv-role').val(user.role);
-        $('#wbdv-dob').val();
-
+        if(user.dateOfBirth){
+        $('#wbdv-dob').val(user.dateOfBirth.split('T')[0]);
+        }
     }
     function logout() {
     	window.location.href='../login/login.template.client.html';
@@ -42,6 +43,9 @@
             $dob);
 
         userService.updateProfile(newUser)
-            .then(showStatus);
+            .then(showProfile)
+            .then(function(){
+                alert('success');
+            });
     }
 })();
