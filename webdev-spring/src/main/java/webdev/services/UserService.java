@@ -17,10 +17,10 @@ public class UserService {
 		return (List<User>) userRepository.findAll();
 	}
 	
-	@GetMapping("/api/register")	
-	public List<User> findAllUserss() {
-		return (List<User>) userRepository.findAll();
-	}
+//	@GetMapping("/api/register")	
+//	public List<User> findAllUserss() {
+//		return (List<User>) userRepository.findAll();
+//	}
 	
 	
 	@PostMapping("/api/user")
