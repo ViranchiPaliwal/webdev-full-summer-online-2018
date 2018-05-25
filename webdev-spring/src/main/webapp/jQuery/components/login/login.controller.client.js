@@ -1,16 +1,18 @@
 (function () {
-    var $usernameFld, $passwordFld;
+    var $usernameFld, $passwordFld, $unsuccessAlert;
     var $loginBtn;
     var userService = new UserServiceClient();
     $(main);
 
     function main() {
     	$loginBtn =$('#wbdv-login');
-    	$loginBtn.click(login);		
+    	$loginBtn.click(login);
+        $unsuccessAlert = $('.wbdv-unsuccess');
     }
     function login() { 
     	$usernameFld = $('#usernameFld').val();
     	$passwordFld = $('#passwordFld').val();
+        $unsuccessAlert.hide();
 
         var newUser = new User($usernameFld,
             $passwordFld,
@@ -22,10 +24,11 @@
 
     function showStatus(user){
         if(user==null){
-            alert('user not found');
+            $unsuccessAlert.html('Sign in unsuccessful. Entered credentials not found.');
+            $unsuccessAlert.show();
         }
         else{
-            alert('Success');
+            window.location.href='../profile/profile.template.client.html?userId='+user.id;
         }
     }
 })();

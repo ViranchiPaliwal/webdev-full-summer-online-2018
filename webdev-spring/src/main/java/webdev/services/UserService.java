@@ -32,7 +32,7 @@ public class UserService {
 	public User login(@RequestBody User user){
 		List<User> users = (List<User>) userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
 		if(users.isEmpty()) {
-			return null;
+			 throw new NullPointerException("User not found exception");
 		}
 		return users.get(0);
 	}
@@ -48,7 +48,7 @@ public class UserService {
 		if(user.isPresent()) {
 			return user.get();
 		}
-		return null;
+		 throw new NullPointerException("User with this id not found.");
 	}
 	
 	@PutMapping("/api/user/{userId}")
@@ -64,7 +64,7 @@ public class UserService {
 			userRepository.save(existUser);
 			return existUser;
 		}
-		return null;
+		 throw new NullPointerException("User with this credentials not found.");
 	}
 	
 	
@@ -74,7 +74,7 @@ public class UserService {
 		if(users.isEmpty()) {
 			return createUser(user);
 		}
-		return null;
+		 throw new NullPointerException("User already exist.");
 	}
 	
 	@PutMapping("/api/profile")

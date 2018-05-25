@@ -8,7 +8,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"/>
-    <script src="profile.style.client.css"></script>
+    <link rel="stylesheet" type="text/css" href="profile.style.client.css"></link>
     <script src="../../services/user.service.client.js"></script>
     <script src="../../models/user.model.client.js"></script>
     <script src="profile.controller.client.js"></script>
@@ -18,12 +18,13 @@
 
 <div class="container">
   <h1>Profile</h1>
+    <div class="wbdv-alert alert alert-danger"></div>
   <form>
     <div class="form-group row">
       <label for="wbdv-username" class="col-sm-2 col-form-label">
         Username </label>
       <div class="col-sm-10">
-        <input class="form-control" id="wbdv-username" placeholder="Alice">
+        <input class="form-control" disabled id="wbdv-username" placeholder="Alice">
       </div>
     </div>
     <div class="form-group row">
@@ -49,6 +50,7 @@
         <select id="wbdv-role" class="form-control">
                 <option value="FACULTY">Faculty</option>
                 <option value="STUDENT">Student</option>
+                <option value="ADMIN">Admin</option>
          </select>
       </div>
      </div>
@@ -64,7 +66,7 @@
       <label class="col-sm-2 col-form-label"></label>
       <div class="col-sm-10">
         <button type="button" id="wbdv-update" class="btn btn-success btn-block">Update</button>
-        <button type="button" id="wbdv-logout" class="btn btn-danger btn-block">Logout</button>
+        <button type="button" href="../login/login.template.client.html" id="wbdv-logout" class="btn btn-danger btn-block">Logout</button>
       </div>
     </div>
   </form>

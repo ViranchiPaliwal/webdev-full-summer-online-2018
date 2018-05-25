@@ -8,7 +8,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"/>
-    <script src="register.style.client.css"></script>
+    <link rel="stylesheet" type="text/css" href="register.style.client.css"></link>
     <script src="../../services/user.service.client.js"></script>
     <script src="../../models/user.model.client.js"></script>
     <script src="register.controller.client.js"></script>
@@ -17,7 +17,9 @@
 
 <div class="container">
   <h1>Register</h1>
-  <form>
+    <div class="wbdv-unsuccess alert alert-danger"></div>
+
+    <form>
     <div class="form-group row">
       <label class="col-form-label col-sm-2" for="usernameFld">Username</label>
       <div class="col-sm-10">
@@ -40,7 +42,7 @@
         <label class="col-sm-2 col-form-label"></label>
         <div class="col-sm-offset-2 col-sm-10">
         <button type="button" id="wbdv-register" class="btn btn-block btn-primary">Sign Up</button>
-        <a href="">Login</a>
+        <a href="../login/login.template.client.html">Login</a>
       </div>
     </div>
   </form>

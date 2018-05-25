@@ -32,9 +32,14 @@ function UserServiceClient() {
 
 	function findUserById(userId, callback){
 		return fetch(self.url+'/'+userId)
-		.then(function(response){
-			return response.json();
-		});
+            .then(function(response){
+                if(response.status==200){
+                    return response.json();
+                }
+                else{
+                    return null;
+                }
+            });
 	}
 	function updateUser(userId, updatedUser, callback){
 		return fetch(self.url+'/'+userId,{
@@ -45,7 +50,12 @@ function UserServiceClient() {
 			}
 		})
 		.then(function(response){
-			return response.json();
+            if(response.status==200){
+                return response.json();
+            }
+            else{
+                return null;
+            }
 		});
 	}
 	function deleteUser(userId, callback) {
@@ -60,14 +70,31 @@ function UserServiceClient() {
 			headers:{
 				'content-type':'application/json'
 			}
+		}).then(function(response){
+			if(response.status==200){
+				return response.json();
+			}
+			else{
+				return null;
+			}
 		});
     }
+
+    function success(response){}
+    function error(response){}
     function login(newUser, callback) {
         return fetch(self.loginUrl,{
             method: 'post',
             body: JSON.stringify(newUser),
             headers:{
                 'content-type':'application/json'
+            }
+        }).then(function(response){
+            if(response.status==200){
+                return response.json();
+            }
+            else{
+                return null;
             }
         });
     }

@@ -1,19 +1,29 @@
 (function () {
-    var $phone, $contact, $email, $role, $dob, $username;
+    var $phone, $contact, $email, $role, $dob, $username, $isLegitAlert;
     var $logoutBtn, $updateBtn;
     var userService = new UserServiceClient();
     $(main);
 
     function main() {
-    	var userId = window.location.href.split('=')[1];
-    	userService.findUserById(userId).then(showProfile);
-    	$updateBtn =$('#wbdv-update');
-    	$updateBtn.click(updateProfile);	
-    	$logoutBtn =$('#wbdv-logout');
-    	$logoutBtn.click(logout);		
+    	var userId = Number(window.location.href.split('=')[1]);
+        $isLegitAlert = $('.wbdv-alert');
+    	if(userId) {
+            userService.findUserById(userId).then(showProfile);
+            $updateBtn = $('#wbdv-update');
+            $updateBtn.click(updateProfile);
+            $logoutBtn = $('#wbdv-logout');
+            $logoutBtn.click(logout);
+        }
+        else{
+            unAuthorizedAccess();
+        }
     }
 
     function showProfile(user){
+        if(user==null){
+            unAuthorizedAccess();
+            return;
+        }
         $('#wbdv-username').val(user.username);
         $('#wbdv-phone').val(user.phone);
         $('#wbdv-email').val(user.email);
@@ -22,12 +32,18 @@
         $('#wbdv-dob').val(user.dateOfBirth.split('T')[0]);
         }
     }
+
     function logout() {
     	window.location.href='../login/login.template.client.html';
-        }
+    }
 
+    function unAuthorizedAccess(){
+        alert('Unauthorized access. Kindly click ok button to sign in.')
+        logout();
+    }
 
     function updateProfile(user){
+
         $username = $('#wbdv-username').val();
     	$contact = $('#wbdv-phone').val();
     	$email = $('#wbdv-email').val();
@@ -45,7 +61,7 @@
         userService.updateProfile(newUser)
             .then(showProfile)
             .then(function(){
-                alert('success');
+                alert('Profile updated successfully.');
             });
     }
 })();

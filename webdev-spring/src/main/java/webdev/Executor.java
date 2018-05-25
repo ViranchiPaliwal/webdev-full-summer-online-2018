@@ -10,5 +10,4 @@ public class Executor {
 		// TODO Auto-generated method stub
 		SpringApplication.run(Executor.class, args);
 	}
-
 }
