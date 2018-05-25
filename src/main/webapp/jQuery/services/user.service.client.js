@@ -1,3 +1,7 @@
+/***
+ * Represents middle layer iteracts with server
+ * and provide response
+ */
 function UserServiceClient() {
 	this.createUser = createUser;
 	this.findAllUsers = findAllUsers;
@@ -23,6 +27,7 @@ function UserServiceClient() {
 			}
 		});
 	}
+
 	function findAllUsers(callback) {
 		return fetch(self.url)
 		.then(function(response){
@@ -41,6 +46,7 @@ function UserServiceClient() {
                 }
             });
 	}
+
 	function updateUser(userId, updatedUser, callback){
 		return fetch(self.url+'/'+userId,{
 			method: 'put',
@@ -58,11 +64,13 @@ function UserServiceClient() {
             }
 		});
 	}
+
 	function deleteUser(userId, callback) {
 		return fetch(self.url+'/'+userId,{
 			method: 'delete'
 		});
 	}
+
     function register(newUser, callback) {
     	return fetch(self.registerUrl,{
 			method: 'post',
@@ -80,8 +88,6 @@ function UserServiceClient() {
 		});
     }
 
-    function success(response){}
-    function error(response){}
     function login(newUser, callback) {
         return fetch(self.loginUrl,{
             method: 'post',

@@ -4,11 +4,18 @@
 	var userService = new UserServiceClient();
 	$(main);
 
+    /***
+     * runs after complete html loading
+     */
 	function main() { 
 		$registerBtn = $('#wbdv-register');
 		$registerBtn.click(register);
         $unsuccessAlert = $('.wbdv-unsuccess');
 	}
+
+    /***
+	 * User registration functionality
+     */
 	function register() {
 		$usernameFld = $('#usernameFld').val();
 		$passwordFld = $('#passwordFld').val();
@@ -27,6 +34,11 @@
 		userService.register(newUser).then(showStatus);
 
 	}
+
+    /***
+     * checks response status and updates accordingly
+     * @param user response from service
+     */
 	function showStatus(response){
 		if(response){
             window.location.href='../profile/profile.template.client.html?userId='+response.id;
@@ -35,11 +47,5 @@
             $unsuccessAlert.html('Registration unsuccessful. User with these credentials already exist.');
             $unsuccessAlert.show();
         }
-	}
-	function success(response){
-		console.log('done');
-	}
-	function error(response){
-		console.log('errrorr');
 	}
 })();

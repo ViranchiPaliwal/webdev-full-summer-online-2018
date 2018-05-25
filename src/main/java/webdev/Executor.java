@@ -4,6 +4,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 
+/***
+ * Main executor class for application
+ * @author vpaliwal
+ *
+ */
 public class Executor {
 
 	public static void main(String[] args) {

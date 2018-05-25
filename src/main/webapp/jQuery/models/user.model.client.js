@@ -1,3 +1,6 @@
+/***
+ * Represents User model with all properties
+ */
 function User(username, password, firstName, lastName, role, phone, email,  dateOfBirth) {
 	this.username = username;
 	this.password = password;

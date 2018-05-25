@@ -1,12 +1,14 @@
 (function () {
-    var $phone, $contact, $email, $role, $dob, $username, $isLegitAlert;
+    var $phone, $contact, $email, $role, $dob, $username;
     var $logoutBtn, $updateBtn;
     var userService = new UserServiceClient();
     $(main);
 
+    /***
+     * runs after complete html loading
+     */
     function main() {
     	var userId = Number(window.location.href.split('=')[1]);
-        $isLegitAlert = $('.wbdv-alert');
     	if(userId) {
             userService.findUserById(userId).then(showProfile);
             $updateBtn = $('#wbdv-update');
@@ -19,6 +21,10 @@
         }
     }
 
+    /***
+     * checks response status and updates ui fields
+     * @param user response from server
+     */
     function showProfile(user){
         if(user==null){
             unAuthorizedAccess();
@@ -33,17 +39,26 @@
         }
     }
 
+    /***
+     * Logout user from the profile screen.
+     */
     function logout() {
     	window.location.href='../login/login.template.client.html';
     }
 
+    /***
+     * give alert to user regarding unauthorized access
+     */
     function unAuthorizedAccess(){
         alert('Unauthorized access. Kindly click ok button to sign in.')
         logout();
     }
 
+    /***
+     * updates user profile
+     * @param takes user object as an input
+     */
     function updateProfile(user){
-
         $username = $('#wbdv-username').val();
     	$contact = $('#wbdv-phone').val();
     	$email = $('#wbdv-email').val();

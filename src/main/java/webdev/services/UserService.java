@@ -7,6 +7,12 @@ import java.util.*;
 import webdev.models.User;
 import webdev.repositories.UserRepository;
 
+/***
+ * Exposes all api available for accessing publicly
+ *  and provides responses after querying to database
+ * @author vpaliwal
+ *
+ */
 @RestController
 public class UserService {
 	@Autowired
@@ -16,12 +22,6 @@ public class UserService {
 	public List<User> findAllUsers() {
 		return (List<User>) userRepository.findAll();
 	}
-	
-//	@GetMapping("/api/register")	
-//	public List<User> findAllUserss() {
-//		return (List<User>) userRepository.findAll();
-//	}
-	
 	
 	@PostMapping("/api/user")
 	public User createUser(@RequestBody User user){

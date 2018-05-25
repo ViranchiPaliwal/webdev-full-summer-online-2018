@@ -4,11 +4,18 @@
     var userService = new UserServiceClient();
     $(main);
 
+    /***
+     * runs after complete html loading
+     */
     function main() {
     	$loginBtn =$('#wbdv-login');
     	$loginBtn.click(login);
         $unsuccessAlert = $('.wbdv-unsuccess');
     }
+
+    /***
+     * implements user login functionality
+     */
     function login() { 
     	$usernameFld = $('#usernameFld').val();
     	$passwordFld = $('#passwordFld').val();
@@ -22,6 +29,10 @@
             .then(showStatus);
     }
 
+    /***
+     * checks response status and updates accordingly
+     * @param user response from service
+     */
     function showStatus(user){
         if(user==null){
             $unsuccessAlert.html('Sign in unsuccessful. Entered credentials not found.');

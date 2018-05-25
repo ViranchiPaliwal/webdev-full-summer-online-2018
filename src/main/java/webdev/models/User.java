@@ -4,6 +4,11 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+/***
+ * Represents User model with all properties
+ * @author vpaliwal
+ *
+ */
 @Entity
 public class User {
 	@Id
