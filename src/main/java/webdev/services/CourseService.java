@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import webdev.models.Course;
 import webdev.repositories.CourseRepository;
 
-
+@CrossOrigin(origins="*") 
 @RestController
 public class CourseService {
 	@Autowired
