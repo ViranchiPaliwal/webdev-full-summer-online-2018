@@ -43,6 +43,10 @@ public class ModuleService {
 		}
 		return null;		
 	}
-
-
+	
+	@DeleteMapping("/api/course/{courseId}")
+	public void deleteCourse(
+	@PathVariable("courseId") int id) {
+		courseRepository.deleteById(id);
+	}
 }
