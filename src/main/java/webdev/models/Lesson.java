@@ -17,6 +17,16 @@ public class Lesson {
 	@ManyToOne
 	@JsonIgnore
 	private Module module;
+	
+	@OneToMany(mappedBy="lesson")
+	private List<Topic> topics;
+	
+	public List<Topic> getTopics() {
+		return topics;
+	}
+	public void setTopics(List<Topic> topics) {
+		this.topics = topics;
+	}
 	public int getId() {
 		return id;
 	}
