@@ -5,25 +5,18 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 @Entity
 public class Lesson {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date modified;
-	@OneToMany(mappedBy="course")
-    private List<Module> modules;
-
-	public List<Module> getModules() {
-		return modules;
-	}
-	public void setModules(List<Module> modules) {
-		this.modules = modules;
-	}
+	@ManyToOne
+	@JsonIgnore
+	private Module module;
 	public int getId() {
 		return id;
 	}
@@ -36,17 +29,10 @@ public class Lesson {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getCreated() {
-		return created;
+	public Module getModule() {
+		return module;
 	}
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-	public Date getModified() {
-		return modified;
-	}
-	public void setModified(Date modified) {
-		this.modified = modified;
+	public void setModule(Module module) {
+		this.module = module;
 	}
 }
-
