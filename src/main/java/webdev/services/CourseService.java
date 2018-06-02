@@ -1,5 +1,7 @@
 package webdev.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,5 +28,10 @@ public class CourseService {
 	public void deleteCourse(
 	@PathVariable("courseId") int id) {
 		courseRepository.deleteById(id);
+	}
+	
+	@GetMapping("/api/course/{courseId}")
+	public Optional<Course> findAllById(@PathVariable("courseId") int id) {
+		return courseRepository.findById(id); 
 	}
 }
