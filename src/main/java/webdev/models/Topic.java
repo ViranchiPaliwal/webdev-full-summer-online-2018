@@ -14,6 +14,9 @@ public class Topic {
 	private int id;
 	private String title;
 	private String content;
+	
+	@OneToMany(mappedBy="topic", orphanRemoval=true)
+	private List<Widget> widgets;
 	@ManyToOne
 	@JsonIgnore
 	private Lesson lesson;
@@ -42,6 +45,12 @@ public class Topic {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public List<Widget> getWidgets() {
+		return widgets;
+	}
+	public void setWidgets(List<Widget> widgets) {
+		this.widgets = widgets;
 	}
 	
 }
