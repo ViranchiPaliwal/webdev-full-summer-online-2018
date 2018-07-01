@@ -3,7 +3,7 @@ package webdev.models;
 import javax.persistence.Entity;
 
 @Entity
-public class Assignment extends Question {
+public class Assignment extends Widget {
 	private String title;
 	private String description;
 	private int points;

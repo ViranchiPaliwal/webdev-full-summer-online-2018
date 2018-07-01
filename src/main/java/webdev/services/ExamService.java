@@ -31,13 +31,13 @@ public class ExamService {
 	TopicRepository topicRepository;
 
 	@GetMapping("/api/exam")	
-	public List<Exam> findAllUsers() {
+	public List<Exam> findAllExam() {
 		return (List<Exam>) examRepository.findAll();
 	}
 
 
 	@GetMapping("/api/exam/{examId}")
-	public Exam findUserById(@PathVariable("examId") int id){
+	public Exam findExamById(@PathVariable("examId") int id){
 		Optional<Exam> exam = examRepository.findById(id);
 		if(exam.isPresent()) {
 			return exam.get();
@@ -46,10 +46,8 @@ public class ExamService {
 	}
 
 	@GetMapping("/api/topic/{topicId}/exam")
-	public List<Exam> findAllExamForTopic(
-			@PathVariable("topicId") int topicId) {
-		Optional<Topic> data =
-				topicRepository.findById(topicId);
+	public List<Exam> findAllExamForTopic( @PathVariable("topicId") int topicId) {
+		Optional<Topic> data = topicRepository.findById(topicId);
 		if(data.isPresent()) {
 			Topic topic=data.get();
 			List<Widget> widgetList = topic.getWidgets();
