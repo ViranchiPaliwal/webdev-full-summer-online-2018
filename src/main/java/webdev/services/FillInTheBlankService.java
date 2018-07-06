@@ -42,8 +42,9 @@ public class FillInTheBlankService {
 			fillInTheBlank.setTitle(updatedFillInTheBlank.getTitle());
 			fillInTheBlank.setSubtitle(updatedFillInTheBlank.getSubtitle());
 			fillInTheBlank.setPoints(updatedFillInTheBlank.getPoints());
-			fillInTheBlank.setValues(updatedFillInTheBlank.getValues());
+			fillInTheBlank.setExpression(updatedFillInTheBlank.getExpression());
 			fillInTheBlank.setVariables(updatedFillInTheBlank.getVariables());
+			fillInTheBlank.setDescription(updatedFillInTheBlank.getDescription());
 			return fillInTheBlankRepository.save(fillInTheBlank);
 		}
 		return null;

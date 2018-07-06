@@ -5,17 +5,17 @@ import javax.persistence.Entity;
 @Entity
 public class FillInTheBlankQuestion extends Question {
 	private String variables;
-	private String values;
+	private String expression;
 	public String getVariables() {
 		return variables;
 	}
 	public void setVariables(String variables) {
 		this.variables = variables;
 	}
-	public String getValues() {
-		return values;
+	public String getExpression() {
+		return expression;
 	}
-	public void setValues(String values) {
-		this.values = values;
+	public void setExpression(String expression) {
+		this.expression = expression;
 	}
 }

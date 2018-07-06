@@ -23,6 +23,13 @@ public class Question {
 	@ManyToOne
 	@JsonIgnore
 	private Exam exam;
+	private String description;
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public int getId() {
 		return id;
 	}

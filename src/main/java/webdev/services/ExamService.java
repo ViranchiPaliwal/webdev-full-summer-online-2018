@@ -78,16 +78,4 @@ public class ExamService {
 	public void deleteExam(@PathVariable("examId") int examId) {
 		examRepository.deleteById(examId);
 	}
-
-	@GetMapping("/api/exam/{examId}/question")
-	public List<Question> findAllQuestionsForExam(@PathVariable("examId") int examId) {
-		Optional<Exam> optionalExam = examRepository.findById(examId);
-		if(optionalExam.isPresent()) {
-			Exam exam = optionalExam.get();
-			List<Question> questions = exam.getQuestions();
-			int count = questions.size();
-			return questions;
-		}
-		return null;
-	}
 }

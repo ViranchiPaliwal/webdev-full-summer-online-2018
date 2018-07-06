@@ -43,7 +43,7 @@ public class MultipleChoiceQuestionService {
 			mcq.setPoints(updatedMultipleChoice.getPoints());
 			mcq.setCorrectOption(updatedMultipleChoice.getCorrectOption());
 			mcq.setOptions(updatedMultipleChoice.getOptions());
-			mcq.setDescription(mcq.getDescription());
+			mcq.setDescription(updatedMultipleChoice.getDescription());
 			return mcqRepository.save(mcq);
 		}
 		return null;

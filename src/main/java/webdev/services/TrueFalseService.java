@@ -42,6 +42,7 @@ public class TrueFalseService {
 			trueFalse.setSubtitle(updatedTrueFalse.getSubtitle());
 			trueFalse.setPoints(updatedTrueFalse.getPoints());
 			trueFalse.setIsTrue(updatedTrueFalse.getIsTrue());
+			trueFalse.setDescription(updatedTrueFalse.getDescription());
 			return trueFalseRepository.save(trueFalse);
 		}
 		return null;

@@ -59,7 +59,4 @@ public class TopicService {
 	public Iterable<Topic> findAllTopics() {
 		return topicRepository.findAll(); 
 	}
-
-	
-	
 }
